@@ -1,0 +1,4 @@
+.DS_Store
+.ipynb_checkpoints
+*.csv    #this will ignore all csvs
+/data    #this will ignore your entire data folder
