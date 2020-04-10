@@ -212,5 +212,3 @@ Testing seasonality can be very valuable to a variety different topics. For exam
 
 This topic proved to be very interesting and I learned a lot about managing time-dependent data. I would like to continue with this project in the future to test for other trends that might exist.
 <!-- #endregion -->
-
-
