@@ -55,6 +55,14 @@ The Dow Jones Industrial Average ("The Dow"), NASDAQ Composite, and S&P 500 are 
 
 + [NASDAQ Composite](https://finance.yahoo.com/quote/%5EIXIC/history?period1=946684800&period2=1586476800&interval=1d&filter=history&frequency=1d)
 
+
+## Data Pipeline:
+
+
++ The Data was loaded in as a csv file using Pandas library
+
++ It was ordered by date in string format, so I added a column in datetime format
+
 ```python
 
 ```
