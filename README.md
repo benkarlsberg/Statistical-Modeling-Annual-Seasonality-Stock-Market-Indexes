@@ -7,7 +7,7 @@ Benjamin Karlsberg
 ## Intention: 
 
 
-Explore the data of the past 20 years of the Dow Jones Industrial Average (DJI), S&P 500 (GSPC), and NASDAQ Composite (IXIC) indices and test for monthly trend outliers.
+Explore the data of the past 20 years (2000-01-01 to 2019-12-31) of the Dow Jones Industrial Average (DJI), S&P 500 (GSPC), and NASDAQ Composite (IXIC) indices and test for monthly trend outliers.
 
 
 ## Motivation:
@@ -55,14 +55,162 @@ The Dow Jones Industrial Average ("The Dow"), NASDAQ Composite, and S&P 500 are 
 
 + [NASDAQ Composite](https://finance.yahoo.com/quote/%5EIXIC/history?period1=946684800&period2=1586476800&interval=1d&filter=history&frequency=1d)
 
+Columns included:
++ Date
++ Open Price
++ Peak Price
++ Low Price
++ Close Price
++ Adjusted Close Price
++ Volume
+
+Total days counted in each dataset: 5096
+
 
 ## Data Pipeline:
 
+<!-- #region -->
++ The Data was loaded in as a csv file using Pandas library and graphs were plotted using the Matplotlib library
 
-+ The Data was loaded in as a csv file using Pandas library
 
-+ It was ordered by date in string format, so I added a column in datetime format
++ It was ordered by date in string format, so I added a column in datetime format using datetime module as well as individual Year and Month columns for grouping purposes
 
-```python
 
-```
++ A column was added for the difference between the previous day close price and a label column to mark if the difference was positive or negative
+
+
++ Using the resample method, I was able to calculate the total increase or decrease in price between each business month over 20 years
+
+
++ The observed frequencies of an increase or decrease in price for each month was calculated and plotted for chi-squared testing
+
+
++ The average percent change in index price was graphed for each month as a line graph
+
+
++ Histograms comparing the percent change in the summer months and winter months was created to be utilized for a t-test comparing the means
+
+
+
+<!-- #endregion -->
+
+## 20 Year History:
+
+
+<img src="images/20 year dji.png">
+
+<img src="images/20 year s&p.png">
+
+<img src="images/20 year nasdaq.png">
+
+
+## Trend Graphs:
+
+
+<img src="images/dji average monthly close change.png" width= 800>
+
+<img src="images/nasdaq average monthly close change.png">
+
+<img src="images/s&p average monthly close change.png">
+
+
+## Hypothesis Tests and Outcomes: 
+
+
+### Question 1 : Do the stock market indexes show a monthly seasonality trend or are they generally uniformly distributed?
+
++ Null Hypothesis: The month of the year should not matter for index price so the months should follow a uniform distribution (Efficient Market Hypothesis).
+
++ Alternate Hypothesis: The month has an affect on the index price.
+
+
+<!-- #region -->
+#### In order to run a Chi-Squared test, I evaluated each month to an increase or decrease in monthly closing price to establish trends as discrete variables. A positive month counts as a success in the following histograms.
+
+#### With a PMF for each month being 1/12 and 240 samples of months, the expected value is assumed to be 10 for each month.
++ Samples are taken from the January, 2000 through December 2019
+
+<img src="images/dji monthly increase freqs.png">
+
+
+<img src="images/s&p monthly increase freqs.png">
+
+
+<img src="images/nasdaq monthly increase freqs.png">
+<!-- #endregion -->
+
+#### Chi-squared results:
+
++ DJI p-value for All Months: 0.2868397574
+
++ S&P 500 p-value for All Months: 0.5394040927
+
++ NASDAQ Composite p-value for All Months: 0.9157717763
+
+
+### Question 2: Is there a seasonality difference in index price changes between the Summer and Winter months?
+
+
++ Null Hypothesis: The seasonal time of the year should not have a significant effect on the stock market (Efficient Market Hypothesis)
+
++ Alternate Hypothesis: There is a seasonal difference in stock trends between the Winter (November 1st through April 31st) and Summer (May 1st to Oct 31st) months
+
+
+
+<table><tr>
+<td> <img src="images/dji summer hist.png" width="500" /> </td>
+<td> <img src="images/dji winter hist.png" width="500" /> </td>
+<td></table>
+
+
+<table><tr>
+<td> <img src="images/s&p summer hist.png" width="500" /> </td>
+<td> <img src="images/s&p winter hist.png" width="500" /> </td>
+<td></table>
+
+
+<table><tr>
+<td> <img src="images/nasdaq summer hist.png" width="500" /> </td>
+<td> <img src="images/nasdaq winter hist.png" width="500" /> </td>
+<td></table>
+
+
+#### Because these histograms appear to be normally distributed, I chose to use Welch's two-tailed t-test to compare the similarity of the sample means.
+
+<!-- #region -->
+#### Welch t-test results:
+
+DJI:
++ Welch Test Statistic: 1.24
++ Degrees of Freedom for Welch's Test: 237.89
++ p-value for different seasons using t-test: 0.22
+
+
+S&P 500:
++ Welch Test Statistic: 1.13
++ Degrees of Freedom for Welch's Test: 237.96
++ p-value for different seasons using t-test: 0.26
+
+
+NASDAQ Composite:
++ Welch Test Statistic: 0.14
++ Degrees of Freedom for Welch's Test: 236.35
++ p-value for different seasons: 0.89
+<!-- #endregion -->
+
+## Conclusion: 
+
+
+At first glance, it appears that the trend graphs are showing significant differences in how each month performs on average in terms of percent change. However, when we test the hypotheses that seasonality (between months or seasons of the year) has an effect on index price, we do not see very strong p-values to conclude that seasonality is a major factor in determining stock trends. Therefore, the data generated is more likely to be consistent with seasonality following a uniform distribution.
+
+
+## Future Direction:
+
+<!-- #region -->
+Testing seasonality can be very valuable to a variety different topics. For example, similar methods can be applied to testing the seasonal activity of a virus or bacteria as was done here on the stock market.
+
+
+This topic proved to be very interesting and I learned a lot about managing time-dependent data. I would like to continue with this project in the future to test for other trends that might exist.
+<!-- #endregion -->
+
+
