@@ -141,11 +141,11 @@ Total days counted in each dataset: 5096
 
 #### Chi-squared results:
 
-+ DJI p-value for All Months: 0.2868397574
++ DJI p-value for All Months: 0.287
 
-+ S&P 500 p-value for All Months: 0.5394040927
++ S&P 500 p-value for All Months: 0.539
 
-+ NASDAQ Composite p-value for All Months: 0.9157717763
++ NASDAQ Composite p-value for All Months: 0.916
 
 
 ### Question 2: Is there a seasonality difference in index price changes between the Summer and Winter months?
