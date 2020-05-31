@@ -133,7 +133,7 @@ Total days counted in each dataset: 5096
 <img src="images/dji monthly increase freqs.png">
 
 
-<img src="images/s&p monthly increase freqs.png">
+<img src="images/S&P monthly increase freqs.png">
 
 
 <img src="images/nasdaq monthly increase freqs.png">
@@ -147,6 +147,8 @@ Total days counted in each dataset: 5096
 
 + NASDAQ Composite p-value for All Months: 0.916
 
+The p-values for each of these results are quite high compared to the chosen alpha of 0.05, meaning the results are not able to be considered statistically significant. We fail to reject the null hypothesis and the seasonality of these indexes seems to follow more of a uniform distribution.
+
 
 ### Question 2: Is there a seasonality difference in index price changes between the Summer and Winter months?
 
@@ -157,22 +159,28 @@ Total days counted in each dataset: 5096
 
 
 
-<table><tr>
-<td> <img src="images/dji summer hist.png" width="500" /> </td>
-<td> <img src="images/dji winter hist.png" width="500" /> </td>
-<td></table>
+<table>
+  <tr>
+    <td> <img src="images/dji summer hist.png" width="500" /> </td>
+    <td> <img src="images/dji winter hist.png" width="500" /> </td>
+  </tr>
+</table>
 
 
-<table><tr>
-<td> <img src="images/s&p summer hist.png" width="500" /> </td>
-<td> <img src="images/s&p winter hist.png" width="500" /> </td>
-<td></table>
+<table>
+  <tr>
+    <td> <img src="images/s&p summer hist.png" width="500" /> </td>
+    <td> <img src="images/s&p winter hist.png" width="500" /> </td>
+  </tr>
+</table>
 
 
-<table><tr>
-<td> <img src="images/nasdaq summer hist.png" width="500" /> </td>
-<td> <img src="images/nasdaq winter hist.png" width="500" /> </td>
-<td></table>
+<table>
+  <tr>
+    <td> <img src="images/nasdaq summer hist.png" width="500" /> </td>
+    <td> <img src="images/nasdaq winter hist.png" width="500" /> </td>
+  </tr>
+</table>
 
 
 #### Because these histograms appear to be normally distributed, I chose to use Welch's two-tailed t-test to compare the similarity of the sample means.
