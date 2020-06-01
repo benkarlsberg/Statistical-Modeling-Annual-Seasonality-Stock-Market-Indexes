@@ -169,8 +169,8 @@ The p-values for each of these results are quite high compared to the chosen alp
 
 <table>
   <tr>
-    <td> <img src="images/s&p summer hist.png" width="500" /> </td>
-    <td> <img src="images/s&p winter hist.png" width="500" /> </td>
+    <td> <img src="images/S&P summer hist.png" width="500" /> </td>
+    <td> <img src="images/S&P winter hist.png" width="500" /> </td>
   </tr>
 </table>
 
